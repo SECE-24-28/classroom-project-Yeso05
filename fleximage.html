@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Demo</title>
+    <style>
+        body{
+            background-color:gainsboro ;
+        }
+        .container{
+            justify-content:center;
+            gap:10px;
+            display:flex;
+            flex-direction:row;
+            background-color: bisque;
+            flex:1;
+            flex-wrap:wrap;
+            border-radius:20px;
+            padding:20px;
+        }
+        .box
+        {
+            width:150px;
+            height:170px;
+            color: black;
+            flex:1;
+            padding: 20px;
+            box-shadow:rgb(219, 138, 94);
+            border-radius: 20px;
+        }
+        img{
+            width:200px;
+            height:200px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 12px rgba(129, 78, 12, 0.761);
+            flex: :1;
+        }
+        p{
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to foody</h1>
+    <div class="container">
+        <div class="box"><img src="C:\Users\coolw\OneDrive\Desktop\WhatsApp Image 2025-12-02 at 15.48.41_630e34d2.jpg" ></div>
+        <div class="box"><p>This is a paneer tikka</p></div>
+    </div>
+</body>
+</html>
