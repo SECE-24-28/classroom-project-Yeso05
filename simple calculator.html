@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            simple calculator
+        </title>
+        <style>
+            h1{
+                color:green
+            }
+            button{
+                color:black;
+                background-color:lightblue;
+                font-family: 'Times New Roman', Times, serif
+;
+            }
+        </style>
+        <script>
+            function add(){
+                let a=parseInt(document.getElementById("t1").value);
+                let b=parseInt(document.getElementById("t2").value);
+                document.getElementById("t3").value=a+b;
+            }
+            function sub(){
+                let a=parseInt(document.getElementById("t1").value);
+                let b=parseInt(document.getElementById("t2").value);
+                document.getElementById("t3").value=a-b;
+            }
+            function mul(){
+                let a=parseInt(document.getElementById("t1").value);
+                let b=parseInt(document.getElementById("t2").value);                
+                document.getElementById("t3").value=a*b;
+            }
+            function div(){ 
+                let a=parseInt(document.getElementById("t1").value);
+                let b=parseInt(document.getElementById("t2").value);            
+                document.getElementById("t3").value=a/b;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Simple Calculator</h1>
+        <table>
+            <tr>
+                <td>First Number:</td>
+                <td><input type="text" id="t1"></td>
+            </tr>
+            <tr>
+                <td>Second Number:</td>
+                <td><input type="text" id="t2"></td>
+            </tr>
+            <tr>
+                <td>Result:</td>
+                <td><input type="text" id="t3"></td>
+            </tr>
+            <br></table><br>    
+            <tr>
+                <button onclick="add()">ADD</button>
+                <button onclick="sub()">SUB</button>        
+            </tr>
+            <tr>
+                <button onclick="mul()">MUL</button>
+                <button onclick="div()">DIV</button>
+        </table>
+        
+
+    </body>
+</html>
