@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        color:blueviolet;
+        font-size:20px; 
+        font-family:cursive;
+    }
+    button{
+        padding:10px;
+        font-size:15px;
+        background-color:lightgreen;
+        border-radius:5px;
+        cursor:pointer;
+    }
+</style>
+<body>
+    <h1>Hii This is Yuvashree and Yeswanthira</h1>
+    <button id="bt">
+        Click Me
+    </button>
+    <script>
+        let btn=document.getElementById("bt");
+        btn.addEventListener("click",press);
+            function press(){
+                let hd=document.createElement("h1");
+                hd.innerHTML="This is sureka and srinithi";
+                document.body.appendChild(hd);
+            }
+    </script>
+</body>
+</html>
+
