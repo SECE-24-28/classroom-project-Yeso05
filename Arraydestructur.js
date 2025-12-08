@@ -1,0 +1,13 @@
+let arr = [10, 20, 30, 40, 50];
+let [a, b, c, d, e] = arr;
+console.log(a); 
+console.log(b);
+console.log(c);
+console.log(d);
+console.log(e);
+
+//also for objects
+let stu={na:"abu",city:"Chennai"}
+let{na,city}=stu;
+console.log(na);
+console.log(city);
