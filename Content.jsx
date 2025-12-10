@@ -1,17 +1,18 @@
-import React from 'react';
-import './Style.css'
-const Content=() => {
-    return (
-        <div className='bg'>
-            <ol>
-                <li>CSE</li>
-                <li>-   IT</li>
-                <li>ECE</li>
-                <li>EEE</li>
-                <li>MECH</li>
-            </ol>
-            </div>
-    )
-}
+import React from 'react'
 
+export const Content = ({frnds}) =>
+     {
+  return (
+    <div>
+        <ul>
+            {
+                frnds.map((val)=>(
+                    <li >{val}</li>
+                )
+                )
+            }
+        </ul>
+    </div>
+  )
+}
 export default Content

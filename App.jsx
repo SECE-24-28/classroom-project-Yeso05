@@ -1,20 +1,29 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import Header from './Header'
-import Content from './Content'
+import Content from './Content' 
+  //basic syntax of react component
+  function App() {
 
+    let frnds=["Anil","Sunil","Kiran","Sohan"];
 
-function App() {
-  let frnds=["Smith","Johnson","Williams","Jones","Brown"];
+    return(
+      <>
+      <Header title={"Friends List"}
+               city={"Chennai"}
 
-  return (
-    <>
-      <Header  />
-      <Content />
-    </>
-  )
+      />
+      {
+        (frnds.length)?
+        <Content frnds={frnds}/>
+        :
+        (<p>No friends found</p>)
+      }
+
+   </>
+   )
 }
+
 
 export default App
