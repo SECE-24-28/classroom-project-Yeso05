@@ -1,29 +1,26 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import Header from './Header'
-import Content from './Content' 
-  //basic syntax of react component
-  function App() {
+import './App.css'
+import { DataProvider } from './DataContext'
+import One from './One'
+import Two from './Two'
+import Three from './Three'
 
-    let frnds=["Anil","Sunil","Kiran","Sohan"];
 
-    return(
-      <>
-      <Header title={"Friends List"}
-               city={"Chennai"}
 
-      />
-      {
-        (frnds.length)?
-        <Content frnds={frnds}/>
-        :
-        (<p>No friends found</p>)
-      }
+function App() {
+  const [count, setCount] = useState(0)
 
-   </>
-   )
+  return (
+    <div className='outer-container'>
+    <DataProvider>
+      <One />
+      <Two /> 
+      <Three />
+    </DataProvider>
+    </div>
+  )
 }
-
 
 export default App
