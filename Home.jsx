@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import DataContext from './context/DataContext'
+import Search from './Search'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
+      const {searchResult}=useContext(DataContext)
   return (
-    <div>Home</div>
+    <div>
+      <Search />
+        {
+        searchResult.map((post)=>
+           <div key={post.id} className='id'>
+            <Link to={`/editpost/${post.id}`} className='bd'>
+        <h3>{post.title}</h3>
+        <p>{post.datetime}</p>
+        <p>{post.body}</p>
+        </Link>
+        <hr />
+        </div>
+     )
+     }
+    </div>
   )
 }
 

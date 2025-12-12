@@ -1,21 +1,75 @@
-import { createContext, useState } from 'react'
-const DataContext = createContext();
-export const DataProvider = ({children}) =>
-{
-    const [num,setNum] = useState(100)
-    const inc=()=>
-    {
-      setNum(num+1)
-    }
-    const dec=()=>
-    {
-      setNum(num-1)
-    }
-    return (
-      <DataContext.Provider value={{num,setNum,inc,dec}}>
-        {children}
-      </DataContext.Provider>
-    );
-};
+import { format } from "date-fns";
+import { createContext, useEffect, useState } from "react";
+import api from '../api/Post'
+import { useNavigate } from "react-router-dom";
 
-export default DataContext;
+const DataContext=createContext()
+export const DataProvider=({children})=>
+{
+      const [posts,setPosts] = useState([])
+  const [search,setSearch]=useState("")
+  const [searchResult,setSearchResult]=useState([])
+  const [title,setTitle]=useState('')
+  const [body,setBody]=useState('')
+  const navigate=useNavigate()
+
+  //Fetch Iniyial Infor
+  //it Will Load Only Once
+  useEffect(()=>
+  {
+    const fetData=async()=>
+    {
+      const res=await api.get("/feedback")
+      setPosts(res.data)
+    }
+    fetData();
+  },[]
+  )
+
+  //search
+  useEffect(()=>
+  {
+    const filterd=posts.filter((post)=>(post.title).includes(search)
+                              )
+    setSearchResult(filterd.reverse())
+  },[posts,search])
+
+  const handleSubmit=(e)=>
+  {
+    e.preventDefault()
+    const id=(posts.length)?String((Number(posts[posts.length-1].id)+1)):("1")
+    const datetime=format(new Date(),"MMM dd,yyyy pp")
+    //newObj={id:id,title:title,datetime:datetime,body:body}
+     const newObj={id,title,datetime,body}
+    api.post("/feedback",newObj)
+    const newList=[...posts,newObj]
+    setPosts(newList)
+    setTitle('')
+    setBody('')
+
+    alert("Post Added Successfully")
+    navigate("/")
+  }
+
+  const handleDelete=async(id)=>
+  {
+    try{
+      await api.delete(`/feedback/${id}`)
+      alert("Post Deleted Successfully")
+      const newList=posts.filter((post)=>post.id!==id)
+      setPosts(newList)
+      navigate("/")
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+    return (
+        <DataContext.Provider value={{posts,searchResult,title,setTitle,body,setBody,
+                                  search,setSearch,handleSubmit,handleDelete
+                                     }}>
+          {children}
+        </DataContext.Provider>
+    )
+}
+export default DataContext
